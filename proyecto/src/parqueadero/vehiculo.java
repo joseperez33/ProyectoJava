@@ -6,7 +6,7 @@ public abstract class vehiculo {
 
 	private String nroPlaca;
 	private Calendar horaEntrada;
-	private Calendar horaSalida;
+	
 
 	public String getNroPlaca() {
 		return nroPlaca;
@@ -22,14 +22,6 @@ public abstract class vehiculo {
 
 	public void setHoraEntrada(Calendar horaEntrada) {
 		this.horaEntrada = horaEntrada;
-	}
-
-	public Calendar getHoraSalida() {
-		return horaSalida;
-	}
-
-	public void setHoraSalida(Calendar horaSalida) {
-		this.horaSalida = horaSalida;
 	}
 
 }
