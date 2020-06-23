@@ -46,7 +46,8 @@ public class Parqueadero {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Parqueadero parqueadero = new Parqueadero();
+		parqueadero.menuPrincipal();
 
 	}
 
