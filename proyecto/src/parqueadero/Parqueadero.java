@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Parqueadero {
 	
-	Scanner teclado = new Scanner(System.in);
+	static Scanner teclado = new Scanner(System.in);
 	
 	
-	public void menuPrincipal() {
+	public static void menuPrincipal() {
 
 
 		System.out.println("Menu Parqueadero");
@@ -46,8 +46,7 @@ public class Parqueadero {
 	}
 
 	public static void main(String[] args) {
-		Parqueadero parqueadero = new Parqueadero();
-		parqueadero.menuPrincipal();
+		menuPrincipal();
 
 	}
 
