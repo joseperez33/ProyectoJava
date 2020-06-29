@@ -1,11 +1,13 @@
 package parqueadero;
 
-import java.util.Calendar;
 
-public abstract class vehiculo {
+import java.util.Date;
+//import java.util.Scanner;
+import java.text.SimpleDateFormat;
 
-	private String nroPlaca;
-	private Calendar horaEntrada;
+public  class vehiculo {
+	private String nroPlaca, horaFormato;
+	private Date horaEntrada;
 	
 
 	public String getNroPlaca() {
@@ -16,12 +18,14 @@ public abstract class vehiculo {
 		this.nroPlaca = nroPlaca;
 	}
 
-	public Calendar getHoraEntrada() {
-		return horaEntrada;
+	public String getHoraEntrada() {
+		SimpleDateFormat formateo = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		horaFormato = formateo.format(horaEntrada);
+		return horaFormato;
 	}
 
-	public void setHoraEntrada(Calendar horaEntrada) {
-		this.horaEntrada = horaEntrada;
+	public void setHoraEntrada() {
+		this.horaEntrada = new Date(); 
 	}
 
 }
