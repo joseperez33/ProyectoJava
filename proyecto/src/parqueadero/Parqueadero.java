@@ -16,7 +16,6 @@ public class Parqueadero  extends registroPlaca{
 	
 	public Parqueadero(String nroPlaca, String horaEntrada, String horasalida, int tipoveh,int estado) {
 		super(nroPlaca, horaEntrada, horasalida, tipoveh, estado);
-		// TODO Auto-generated constructor stub
 	}
 
 	private Scanner teclado = new Scanner(System.in);
@@ -32,8 +31,7 @@ public class Parqueadero  extends registroPlaca{
 		System.out.println("5. Comienza mes");
 		System.out.println("6. Pagos de residentes");
 		System.out.println("7. Salir");
-		System.out.println("8. Guardar");
-		System.out.println("Digite la opcion");		
+		System.out.print("Digite la opcion ");		
 	}
 	
 	private void menuPrincipal() {		
@@ -47,19 +45,23 @@ public class Parqueadero  extends registroPlaca{
 					switch (opcion) {
 					case 1:
 						pqd.ingresoVeh();
-						pqd.menu();		
+						pqd.menu();	
+						pqd.escrituraArchivo();
 						break;
 					case 2:
 						pqd.SalidaVeh();
 						pqd.menu();
+						pqd.escrituraArchivo();
 						break;
 					case 3:
 						pqd.altaVehOficial();
 						pqd.menu();
+						pqd.escrituraArchivo();
 						break;
 					case 4:
 						pqd.altaVehRes();
 						pqd.menu();
+						pqd.escrituraArchivo();
 						break;
 					case 5:
 						pqd.imprimir();
@@ -69,10 +71,6 @@ public class Parqueadero  extends registroPlaca{
 						break;
 					case 7:
 						System.exit(0);
-						break;
-					case 8:
-						pqd.escrituraArchivo();
-						pqd.menu();
 						break;
 					default:
 						System.out.println("error");
