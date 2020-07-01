@@ -1,15 +1,21 @@
 package parqueadero;
 
-
-import java.util.Date;
-//import java.util.Scanner;
-import java.text.SimpleDateFormat;
-
-public  class vehiculo {
-	private String nroPlaca, horaFormato;
-	private Date horaEntrada;
+public class vehiculo {
+	private String nroPlaca;
+	private String horaEntrada,horasalida;
+	private int tipoveh,estado;
 	
-
+	
+	public vehiculo(String nroPlaca, String horaEntrada, String horasalida, int tipoveh,int estado) {
+		
+		this.nroPlaca = nroPlaca;
+		this.horaEntrada = horaEntrada;
+		this.horasalida = horasalida;
+		this.tipoveh = tipoveh;
+		this.estado=estado;
+	}
+	
+	
 	public String getNroPlaca() {
 		return nroPlaca;
 	}
@@ -17,15 +23,37 @@ public  class vehiculo {
 	public void setNroPlaca(String nroPlaca) {
 		this.nroPlaca = nroPlaca;
 	}
+	
+	public int getTipoVeh() {
+		return tipoveh;
+	}
+
+	public void setTipoVeh(int tipo) {
+		this.tipoveh = tipo;
+	}
+	
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
 
 	public String getHoraEntrada() {
-		SimpleDateFormat formateo = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-		horaFormato = formateo.format(horaEntrada);
-		return horaFormato;
+		return horaEntrada;
 	}
 
-	public void setHoraEntrada() {
-		this.horaEntrada = new Date(); 
+	public void setHoraEntrada(String hora) {
+		this.horaEntrada = hora; 
 	}
+	
+	public String getHoraSalida() {
+		return horasalida;
+	}
+
+	public void setHoraSalida(String hora) {
+		this.horasalida = hora; 
+	}	
 
 }
