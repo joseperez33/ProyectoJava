@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 /**
+ * Posicionamiento de los registros dentro del archivo 
  * Posicion 0= Placa
  * Posicion 1= hora de ingreso
  * Posicion 2= tipo de vehiculo(1 oficial, 2 residente, 3 visitante)
@@ -308,6 +309,37 @@ public class registroPlaca extends vehiculo{
 		default:
 			break;
 		}
+    }
+    
+    public void comienzaMes() {
+    	for (int a=0; a< datosvehiculo.size();a++) {
+    		if(datosvehiculo.get(a).getTipoVeh()==1) {
+    			datosvehiculo.get(a).setHoraSalida("0");
+    		}else if(datosvehiculo.get(a).getTipoVeh()==2) {
+    			datosvehiculo.get(a).setHoraSalida("0");
+    		}
+    	}
+    	System.out.println("/**************************************/");
+		System.out.println("/*******Comienzo de mes exitoso********/");
+		System.out.println("/**************************************/");
+    	escrituraArchivo();
+    }
+    
+    public void pagoResidentes() {
+    	int dato=0;
+    	System.out.println("/**************************************/");
+		System.out.println("/**Matricula**||***Tiempo***||**Total**/");
+    	for (int a=0; a< datosvehiculo.size();a++) {
+    		if(datosvehiculo.get(a).getTipoVeh()==2) {
+    			dato=diferenciaHoras(formateo(datosvehiculo.get(a).getHoraEntrada()), formateo(formatDate()))+Integer.valueOf(datosvehiculo.get(a).getHoraSalida());
+    			impresion(datosvehiculo.get(a).getNroPlaca(),dato);
+    		}
+    	}
+    	System.out.println("/**************************************/");
+    }
+    
+    private void impresion(String placa, int dato) {
+    	System.out.println("/****"+placa+"*******"+dato+"*******"+(dato*preciomin));
     }
     
     private Scanner getTeclado() {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Jhonattan.Diaz
+ * @author Jhonattan.Diaz 
  * @author Jose.Perez
  * @author Mariano.Jara
  * 
@@ -64,13 +64,19 @@ public class Parqueadero  extends registroPlaca{
 						pqd.escrituraArchivo();
 						break;
 					case 5:
-						pqd.imprimir();
+						pqd.comienzaMes();
 						pqd.menu();
 						break;
 					case 6:
+						pqd.pagoResidentes();
+						pqd.menu();
 						break;
 					case 7:
 						System.exit(0);
+						break;
+					case 8:
+						pqd.imprimir();
+						pqd.menu();
 						break;
 					default:
 						System.out.println("error");
