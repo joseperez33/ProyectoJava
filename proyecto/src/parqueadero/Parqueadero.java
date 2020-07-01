@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 /**
  * 
- * @author 
+ * @author Jhonattan.Diaz
+ * @author Jose.Perez
+ * @author Mariano.Jara
+ * 
+ * @since 01/07/2020
+ * @version 1 
  *
  */
 public class Parqueadero  extends registroPlaca{
