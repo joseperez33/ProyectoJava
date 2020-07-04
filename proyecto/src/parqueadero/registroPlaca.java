@@ -39,11 +39,11 @@ public class registroPlaca extends vehiculo {
 		File directorio = new File("C:\\parqueadero");
 		if (!directorio.exists()) {
 			System.out.println("/*************************************/");
-			if (directorio.mkdirs()) {
+			if (directorio.mkdirs()) 
 				System.out.println("Directorio principal C:\\parqueadero creado");
-			} else {
+			 else 
 				System.out.println("Error al crear directorio C:\\parqueadero");
-			}
+		
 		}
 	}
 
@@ -216,26 +216,26 @@ public class registroPlaca extends vehiculo {
 		return date1;
 	}
 
-	public void escrituraArchivo() {
+	public void escrituraArchivo() throws IOException {
 		borrar();
-		for (int a = 0; a < datosvehiculo.size(); a++) {
+		System.out.println(datosvehiculo.size());
+		int a= datosvehiculo.size()-1;
+		//for (int a = 0; a < datosvehiculo.size(); a++) {
 			registro = datosvehiculo.get(a).getNroPlaca() + '@' + datosvehiculo.get(a).getHoraEntrada() + '@'
 					+ datosvehiculo.get(a).getTipoVeh() + '@' + datosvehiculo.get(a).getHoraSalida() + '@'
 					+ datosvehiculo.get(a).getEstado();
 			escritura(registro);
-		}
+		//}
 	}
 
-	private void escritura(String registro) {
+	private void escritura(String registro) throws IOException {
 		FileWriter fichero = null;
-		try {
+		
 			fichero = new FileWriter("C:\\parqueadero\\registro_parqueo.db", true);
 			PrintWriter printWriter = new PrintWriter(fichero);
 			printWriter.println(registro); // New line
 			printWriter.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	public void borrar() {
@@ -246,6 +246,7 @@ public class registroPlaca extends vehiculo {
 			bRead = new BufferedReader(lector);
 			bWriter = new BufferedWriter(escritor);
 			while ((linea = bRead.readLine()) != null) {
+				System.out.println("Ingreso");
 				bWriter.write(linea + System.getProperty("line.separator"));
 			}
 			bRead.close();
@@ -299,7 +300,7 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
-	public void comienzaMes() {
+	public void comienzaMes() throws IOException {
 		for (int a = 0; a < datosvehiculo.size(); a++) {
 			if (datosvehiculo.get(a).getTipoVeh() == 1) {
 				datosvehiculo.get(a).setHoraSalida("0");
