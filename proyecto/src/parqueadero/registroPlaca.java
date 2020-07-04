@@ -7,6 +7,17 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
+ * 
+ * @author Jhonattan.Diaz
+ * @author Jose.Perez
+ * @author Mariano.Jara
+ * 
+ * @since 01/07/2020
+ * @version 1
+ *
+ */
+
+/**
  * Posicionamiento de los registros dentro del archivo Posicion 0= Placa
  * Posicion 1= hora de ingreso Posicion 2= tipo de vehiculo(1 oficial, 2
  * residente, 3 visitante) Posicion 4= segun tipo de vehiculo(tipo 1 hora de
@@ -20,6 +31,7 @@ public class registroPlaca extends vehiculo {
 		super(nroPlaca, horaEntrada, horasalida, tipoveh, estado);
 	}
 
+	//Atributos
 	private Scanner teclado;
 	private File archivo = null;
 	private FileReader lector = null;
@@ -35,6 +47,10 @@ public class registroPlaca extends vehiculo {
 	private ArrayList<vehiculo> datosvehiculo = new ArrayList<vehiculo>();
 
 	/*-----------------------------Metodos definitivos-------------------------------------------*/
+	
+	/**
+	 * Metodo para crear la carpeta Parqueadero
+	 */
 	public void validaDirectorio() {
 		File directorio = new File("C:\\parqueadero");
 		if (!directorio.exists()) {
@@ -47,6 +63,12 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
+	
+	/***
+	 * Metodo que valida q exista el archivo registro_parqueo
+	 * 
+	 * @throws IOException
+	 */
 	public void validaArchivo() throws IOException  {
 
 		archivo = new File("C:\\parqueadero\\registro_parqueo.db");
@@ -59,6 +81,11 @@ public class registroPlaca extends vehiculo {
 		
 	}
 
+	
+	/**
+	 * Metodo para escribir en el archivo registro_parqueo
+	 * @throws IOException
+	 */
 	public void iniciar() throws IOException {
 		String linea = "";
 		
@@ -77,12 +104,20 @@ public class registroPlaca extends vehiculo {
 	
 	}
 
+	/**
+	 * Metodo para imprimr la informacion de los vehiculos del parqueadero
+	 */
+	
 	public void imprimir() {
 		for (int a = 0; a < datosvehiculo.size(); a++) {
 			System.out.println("Placa: " + datosvehiculo.get(a).getNroPlaca() + " hora entrada: "+ datosvehiculo.get(a).getHoraEntrada() + " tipo veh: " + datosvehiculo.get(a).getTipoVeh()+ " hora salida: " + datosvehiculo.get(a).getHoraSalida() + " Estado: "+ datosvehiculo.get(a).getEstado());
 		}
 	}
 
+	
+	/**
+	 * Metodo para digitar el tipo del vehiculo
+	 */
 	private void submenu() {
 		System.out.println("/*************************************/");
 		System.out.println("Seleccione el tipo de vehiculo");
@@ -91,6 +126,11 @@ public class registroPlaca extends vehiculo {
 		System.out.println("3. Visitante");
 		tipoVeh = getTeclado().nextInt();
 	}
+	
+	/**
+	 * 
+	 * @param in
+	 */
 
 	private void cadena(String in) {
 		if (in != null || in != "") {
@@ -104,6 +144,10 @@ public class registroPlaca extends vehiculo {
 			}
 		}
 	}
+	
+	/**
+	 * Metodo para la captura de la placa
+	 */
 
 	private void capturaplaca() {
 		nroPlaca2 = "";
@@ -111,6 +155,10 @@ public class registroPlaca extends vehiculo {
 		System.out.print("Ingrese el numero de placa: ");
 		nroPlaca2 = (getTeclado().next()).toUpperCase();
 	}
+	
+	/**
+	 * Metodo paraingresar el vehiculo al parqueadero
+	 */
 
 	public void ingresoVeh() {
 		capturaplaca();
@@ -131,15 +179,27 @@ public class registroPlaca extends vehiculo {
 		System.out.println("/*************************************/");
 	}
 
+	
+	/**
+	 * 
+	 */
 	private void actualizaResidente() {
 		datosvehiculo.get(posicion).setHoraEntrada(formatDate());
 	}
+	
+	/**
+	 * Metodo para el mensaje de salida exitosa
+	 */
 
 	private void mensaje() {
 		System.out.println("/**************************************/");
 		System.out.println("/**********Salida Exitosa**************/");
 		System.out.println("/**************************************/");
 	}
+	
+	/**
+	 * Metodo para sacar el vehiculo del parqueadero
+	 */
 
 	public void SalidaVeh() {
 		String dato = "";
@@ -178,6 +238,11 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
+	
+	/**
+	 * Metodo para buscar la placa  
+	 * @return retorno
+	 */
 	private boolean busquedaPlaca() {
 		boolean retorno = false;
 		for (int a = 0; a < datosvehiculo.size(); a++) {
@@ -189,6 +254,11 @@ public class registroPlaca extends vehiculo {
 		}
 		return retorno;
 	}
+	
+	/**
+	 * Metodo para darle el formato de la fecha
+	 * @return retorno
+	 */
 
 	private String formatDate() {
 		String retorno = "";
@@ -197,6 +267,14 @@ public class registroPlaca extends vehiculo {
 		retorno = (formatter.format(date));
 		return retorno;
 	}
+	
+	/**
+	 * Metodo para calcular el tiempo que duro el vehiculo en el parqueadero 
+	 * 
+	 * @param horaIni
+	 * @param horaFin
+	 * @return total
+	 */
 
 	private int diferenciaHoras(Date horaIni, Date horaFin) {
 		int total = 0;
@@ -206,6 +284,13 @@ public class registroPlaca extends vehiculo {
 		return total;
 	}
 
+	
+	/**
+	 * Metodo para formatear la fecha
+	 * 
+	 * @param dato
+	 * @return date1
+	 */
 	private Date formateo(String dato) {
 		Date date1 = null;
 		try {
@@ -216,6 +301,13 @@ public class registroPlaca extends vehiculo {
 		return date1;
 	}
 
+	
+	/**
+	 *Metodo para crear la informacion que va en el archivo
+	 * 
+	 * @throws IOException
+	 */
+	
 	public void escrituraArchivo() throws IOException {
 		borrar();
 		System.out.println(datosvehiculo.size());
@@ -228,6 +320,14 @@ public class registroPlaca extends vehiculo {
 		//}
 	}
 
+	
+	/**
+	 * Metodo para Modificar el archivo
+	 * 
+	 * @param registro
+	 * @throws IOException
+	 */
+	
 	private void escritura(String registro) throws IOException {
 		FileWriter fichero = null;
 		
@@ -238,6 +338,11 @@ public class registroPlaca extends vehiculo {
 		
 	}
 
+	/**
+	 * 
+	 * 
+	 */
+	
 	public void borrar() {
 		String linea = "";
 		try {
@@ -257,6 +362,11 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
+	/**
+	 * Metodo para marcar el vehiculo como oficial
+	 * 
+	 */
+	
 	public void altaVehOficial() {
 		capturaplaca();
 		if (busquedaPlaca()) {
@@ -267,6 +377,11 @@ public class registroPlaca extends vehiculo {
 			mensajeAlta(3);
 		}
 	}
+	
+	/**
+	 *  Metodo para marcar el vehiculo como residente
+	 * 
+	 */
 
 	public void altaVehRes() {
 		capturaplaca();
@@ -278,6 +393,12 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
+	
+	/**
+	 * Metodo para marcar los vehiculos
+	 * 
+	 * @param param
+	 */
 	private void mensajeAlta(int param) {
 		switch (param) {
 		case 1:
@@ -300,6 +421,12 @@ public class registroPlaca extends vehiculo {
 		}
 	}
 
+	/**
+	 * Metodo para el inicio del mes
+	 * 
+	 * @throws IOException
+	 */
+	
 	public void comienzaMes() throws IOException {
 		for (int a = 0; a < datosvehiculo.size(); a++) {
 			if (datosvehiculo.get(a).getTipoVeh() == 1) {
@@ -314,6 +441,10 @@ public class registroPlaca extends vehiculo {
 		escrituraArchivo();
 	}
 
+	/**
+	 * Metodo para el pago de residentes
+	 */
+	
 	public void pagoResidentes() {
 		int dato = 0;
 		System.out.println("/**************************************/");
@@ -327,10 +458,23 @@ public class registroPlaca extends vehiculo {
 		}
 		System.out.println("/**************************************/");
 	}
+	
+	/**
+	 * Metodo para imprimir el pago del residente
+	 * 
+	 * @param placa
+	 * @param dato
+	 */
 
 	private void impresion(String placa, int dato) {
 		System.out.println("/****" + placa + "*******" + dato + "*******" + (dato * preciominr));
 	}
+	
+	/**
+	 * Metodo para la captura de informacion por teclado
+	 * 
+	 * @return teclado
+	 */
 
 	private Scanner getTeclado() {
 		if (teclado == null) {
