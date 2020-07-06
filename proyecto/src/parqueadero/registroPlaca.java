@@ -128,7 +128,7 @@ public class registroPlaca extends vehiculo {
 	}
 	
 	/**
-	 * 
+	 * Metodo para leer archivo y dividir la cadena en variables
 	 * @param in
 	 */
 
@@ -322,7 +322,7 @@ public class registroPlaca extends vehiculo {
 
 	
 	/**
-	 * Metodo para Modificar el archivo
+	 * Metodo para escribir el archivo
 	 * 
 	 * @param registro
 	 * @throws IOException
@@ -339,7 +339,7 @@ public class registroPlaca extends vehiculo {
 	}
 
 	/**
-	 * 
+	 * Metodo para borrar el archivo
 	 * 
 	 */
 	
